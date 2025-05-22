@@ -1,38 +1,143 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Banco</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banco Nexus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1f2937;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: #111827;
+    }
+
+    section {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #374151;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .btn {
+      background-color: #4f46e5;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-right: 0.5rem;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #4338ca;
+    }
+
+    .secondary-btn {
+      background-color: #e5e7eb;
+      color: #374151;
+    }
+
+    .secondary-btn:hover {
+      background-color: #d1d5db;
+    }
+
+    #mensaje {
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+
+    #resultado {
+      margin-top: 1rem;
+      background: #f1f5f9;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #1e293b;
+      white-space: pre-wrap;
+    }
+
+    .cliente {
+      margin-bottom: 1.5rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 1rem 0;
+    }
+  </style>
 </head>
 <body>
-    <h1>Banco</h1>
 
-    <section hidden>
-        <h2>Operaciones bancarias</h2>
+  <h1>Banco Nexus</h1>
 
-        <label for="montoInput">Monto</label>
-        <input type="number" id="montoInput" placeholder="Ingresa monto" />
+  <section id="consultaCuenta">
+    <h2>Consulta de Cuenta</h2>
+    <label for="cuentaInput">CURP</label>
+    <input type="text" id="cuentaInput" placeholder="Ej. RUAA900101MDFXXX01" />
+    <div>
+      <button class="btn" onclick="consultarCuenta()">Consultar</button>
+      <button class="btn secondary-btn" onclick="consultarClientesConTodo()">Ver todos los clientes</button>
+    </div>
+    <p id="mensaje"></p>
+    <div id="resultado" style="display: none;"></div>
+  </section>
 
-        <div>
-            <button class="retirar" onclick="realizarOperacion('retiro')">Retirar</button>
-            <button class="depositar" onclick="realizarOperacion('deposito')">Depositar</button>
-        </div>
+  <section id="operaciones" hidden>
+    <h2>Operaciones</h2>
+    <label for="montoInput">Monto</label>
+    <input type="number" id="montoInput" placeholder="Ingresa monto" />
+    <div>
+      <button class="btn" onclick="realizarOperacion('retiro')">Retirar</button>
+      <button class="btn" onclick="realizarOperacion('deposito')">Depositar</button>
+    </div>
+  </section>
 
-        <p id="mensaje" style="margin-top: 1em;"></p>
-    </section>
-
-    <section>
-        <h2>Consulta cuenta</h2>
-        <label for="cuentaInput">Número de cuenta</label>
-        <input type="" id="cuentaInput" placeholder="Ingresa tu cuenta" />
-        <button class="btn-consultar" onclick="consultarCuenta()">Consultar</button>
-        <button onclick="consultarClientesConTodo()">Consultar todos los clientes</button>
-    
-        <div id="resultado" class="resultado" style="display: none;"></div>
-    </section>
-    
-    <script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
